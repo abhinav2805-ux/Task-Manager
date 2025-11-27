@@ -4,6 +4,10 @@ A full-stack task management application built with Next.js (backend) and React 
 
 ## Tech Stack
 
+**Live Demo**
+- Frontend: [https://task-manager-ljtt.vercel.app](https://task-manager-ljtt.vercel.app)
+- Backend (API): [https://task-manager-m7ub.vercel.app](https://task-manager-m7ub.vercel.app)
+
 ### Backend
 - **Next.js 15** - React framework with API routes
 - **Prisma** - ORM for MongoDB
