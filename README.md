@@ -98,7 +98,7 @@ Before you begin, ensure you have the following installed:
 
 3. Create a `.env` file in the `frontend` directory:
    ```env
-   VITE_API_URL=http://localhost:3001
+   VITE_API_URL=http://localhost:3000
    ```
 
 ## Running the Application
@@ -110,7 +110,7 @@ Before you begin, ensure you have the following installed:
    cd backend
    npm run dev
    ```
-   The backend will run on `http://localhost:3001`
+   The backend will run on `http://localhost:3000`
 
 2. **Start the Frontend** (Terminal 2):
    ```bash
@@ -177,27 +177,27 @@ Before you begin, ensure you have the following installed:
 
 #### Register User
 ```bash
-curl -X POST http://localhost:3001/api/auth/register \
+curl -X POST http://localhost:3000/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{"username":"testuser","password":"testpass123"}'
 ```
 
 #### Login
 ```bash
-curl -X POST http://localhost:3001/api/auth/login \
+curl -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"username":"testuser","password":"testpass123"}'
 ```
 
 #### Get Tasks (requires JWT token)
 ```bash
-curl -X GET http://localhost:3001/api/tasks \
+curl -X GET http://localhost:3000/api/tasks \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
 #### Create Task
 ```bash
-curl -X POST http://localhost:3001/api/tasks \
+curl -X POST http://localhost:3000/api/tasks \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{"title":"New Task","description":"Task description","status":"PENDING"}'
@@ -205,7 +205,7 @@ curl -X POST http://localhost:3001/api/tasks \
 
 #### Update Task
 ```bash
-curl -X PUT http://localhost:3001/api/tasks/TASK_ID \
+curl -X PUT http://localhost:3000/api/tasks/TASK_ID \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{"title":"Updated Task","description":"Updated description","status":"COMPLETED"}'
@@ -213,7 +213,7 @@ curl -X PUT http://localhost:3001/api/tasks/TASK_ID \
 
 #### Delete Task
 ```bash
-curl -X DELETE http://localhost:3001/api/tasks/TASK_ID \
+curl -X DELETE http://localhost:3000/api/tasks/TASK_ID \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
@@ -221,7 +221,7 @@ curl -X DELETE http://localhost:3001/api/tasks/TASK_ID \
 
 1. Import the following collection or create requests manually:
 
-   **Base URL**: `http://localhost:3001`
+   **Base URL**: `http://localhost:3000`
 
    **Endpoints**:
    - `POST /api/auth/register` - Register new user
@@ -288,12 +288,12 @@ curl -X DELETE http://localhost:3001/api/tasks/TASK_ID \
    - For MongoDB Atlas, ensure your IP is whitelisted
 
 3. **Port already in use**:
-   - Change the port in `package.json` scripts or kill the process using port 3001
+   - Change the port in `package.json` scripts or kill the process using port 3000
 
 ### Frontend Issues
 
 1. **Cannot connect to backend**:
-   - Verify backend is running on port 3001
+   - Verify backend is running on port 3000
    - Check `VITE_API_URL` in frontend `.env` file
    - Check CORS settings in backend middleware
 
@@ -307,7 +307,7 @@ curl -X DELETE http://localhost:3001/api/tasks/TASK_ID \
 ## Available Scripts
 
 ### Backend
-- `npm run dev` - Start development server (port 3001)
+- `npm run dev` - Start development server (port 3000)
 - `npm run build` - Build for production
 - `npm start` - Start production server
 - `npm run prisma:generate` - Generate Prisma client
@@ -329,7 +329,7 @@ curl -X DELETE http://localhost:3001/api/tasks/TASK_ID \
 - `BCRYPT_SALT_ROUNDS` - Bcrypt salt rounds (default: 10)
 
 ### Frontend (.env)
-- `VITE_API_URL` - Backend API URL (default: http://localhost:3001)
+- `VITE_API_URL` - Backend API URL (default: http://localhost:3000)
 
 ## Security Notes
 
