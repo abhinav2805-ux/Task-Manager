@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { extractUserFromRequest } from '@/lib/middleware';
-import { successResponse, ErrorResponses } from '@/lib/response';
+import { successResponse, ErrorResponses, corsOptionsResponse } from '@/lib/response';
 import { UpdateTaskRequest } from '@/types';
 
 export async function PUT(
@@ -103,4 +103,8 @@ export async function DELETE(
         console.error('Task deletion error:', err);
         return ErrorResponses.serverError();
     }
+}
+
+export function OPTIONS() {
+    return corsOptionsResponse();
 }

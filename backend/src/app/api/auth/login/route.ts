@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { verifyPassword, createAuthToken } from '@/lib/auth';
-import { successResponse, ErrorResponses } from '@/lib/response';
+import { successResponse, ErrorResponses, corsOptionsResponse } from '@/lib/response';
 import { LoginRequest, UserResponse } from '@/types';
 
 export async function POST(request: Request) {
@@ -49,4 +49,8 @@ export async function POST(request: Request) {
         console.error('Login processing error:', err);
         return ErrorResponses.serverError();
     }
+}
+
+export function OPTIONS() {
+    return corsOptionsResponse();
 }

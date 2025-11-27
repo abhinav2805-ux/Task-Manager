@@ -1,18 +1,35 @@
 import { NextResponse } from 'next/server';
 import { ApiResponse } from '@/types';
 
+const corsHeaders: Record<string, string> = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+};
+
+export function withCorsHeaders<T extends NextResponse>(response: T): T {
+    Object.entries(corsHeaders).forEach(([key, value]) => response.headers.set(key, value));
+    return response;
+}
+
+export function corsOptionsResponse(): NextResponse<null> {
+    return withCorsHeaders(new NextResponse(null, { status: 204 }));
+}
+
 export function successResponse<T>(
     data: T,
     message?: string,
     status: number = 200
 ): NextResponse<ApiResponse<T>> {
-    return NextResponse.json(
-        {
-            success: true,
-            data,
-            message,
-        },
-        { status }
+    return withCorsHeaders(
+        NextResponse.json(
+            {
+                success: true,
+                data,
+                message,
+            },
+            { status }
+        )
     );
 }
 
@@ -20,12 +37,14 @@ export function errorResponse(
     error: string,
     status: number = 400
 ): NextResponse<ApiResponse> {
-    return NextResponse.json(
-        {
-            success: false,
-            error,
-        },
-        { status }
+    return withCorsHeaders(
+        NextResponse.json(
+            {
+                success: false,
+                error,
+            },
+            { status }
+        )
     );
 }
 

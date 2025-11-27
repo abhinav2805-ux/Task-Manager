@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { extractUserFromRequest } from '@/lib/middleware';
-import { successResponse, ErrorResponses } from '@/lib/response';
+import { successResponse, ErrorResponses, corsOptionsResponse } from '@/lib/response';
 import { CreateTaskRequest } from '@/types';
 
 export async function GET(request: NextRequest) {
@@ -69,4 +69,8 @@ export async function POST(request: NextRequest) {
         console.error('Task creation error:', err);
         return ErrorResponses.serverError();
     }
+}
+
+export function OPTIONS() {
+    return corsOptionsResponse();
 }
